@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Money Tracker</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <main class="container">
+        <div class="heading-holder">
+            <p class="heading">Money Tracker</p>
+            <p class="sub-heading">Track your earnings and expenses.</p>
+        </div>
+        <div class="content-holder">
+            <div class="upper-content-holder">
+                <div class="add-transactions">
+                    <p class="transaction-heading">
+                        Add Transaction
+                    </p>
+                    <form class="add-transaction-form">
+                        <input type="text" name="input-transaction-source" id="input-transaction-source" class="input-transaction-source" placeholder="source">
+                        <input type="number" name="input-transaction-amount" id="input-transaction-amount" class="input-transaction-amount" placeholder="amount">
+                        <input type="submit" value="Add Transaction" class="input-transaction-submit">
+                    </form>
+                </div>
+                <div class="show-stats">
+                    <p class="stats-heading">
+                        Statistics   
+                    </p>
+                    <div class="card-balance">
+                        <span class="balance">Balance: $14000</span>
+                        <span class="balance-side-span"></span>
+                    </div>
+                    <div class="card-income">
+                        <span class="income">Income: $25000</span>
+                        <span class="income-side-span"></span>
+                    </div>
+                    <div class="card-expense">
+                        <span class="expense">Expense: $23000</span>
+                        <span class="expense-side-span"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-content-holder">
+                <div class="show-history">
+                    <div class="history-heading-holder">
+                        <p class="history-heading">
+                            Transaction History
+                        </p>
+                    </div>
+                    <div class="tansations-details">
+                        <div class="income-details">
+                            <p class="income-details-heading">
+                                Income
+                            </p>
+                        </div>
+                        <div class="expense-details">
+                            <p class="expense-details-heading">
+                                Expense
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./index.js"></script>
+</body>
+</html>
