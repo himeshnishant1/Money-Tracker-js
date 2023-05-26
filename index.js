@@ -9,6 +9,15 @@ let balance = 0;
 let income = 0;
 let expense = 0;
 
+incomeHistory.innerHTML = localStorage.getItem("income");
+expenseHistory.innerHTML = localStorage.getItem("expense");
+balance = localStorage.getItem("tbalance");
+if(balance === null)    balance = 0; 
+income = localStorage.getItem("tincome");
+if(income === null) income = 0;
+expense = localStorage.getItem("texpense");
+if(expense === null)    expense = 0;
+//console.log(incomeStats.innerHTML);
 updateStats();
 
 form.addEventListener("submit", (event) => {
@@ -41,6 +50,7 @@ function setIncomeHistory(source, amount){
     incomeHistory.innerHTML += card;
     income = income + parseFloat(amount);
     balance = income - expense;
+    
     updateStats();
 }
 
@@ -70,6 +80,14 @@ function setExpenseHistory(source, amount){
 }
 
 function updateStats(){
+    //console.log(income);
+
+    localStorage.setItem("income", incomeHistory.innerHTML);
+    localStorage.setItem("expense", expenseHistory.innerHTML);
+    localStorage.setItem("tbalance", balance);
+    localStorage.setItem("tincome", income);
+    localStorage.setItem("texpense", expense);
+
     balanceStats.innerHTML = `Balance: $${balance}`;
     incomeStats.innerHTML = `Income: $${income}`;
     expenseStats.innerHTML = `Expense: $${expense}`;
