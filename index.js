@@ -24,10 +24,10 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     const source = form['input-transaction-source'].value;
     const amount = form['input-transaction-amount'].value;
-    form['input-transaction-source'].value.remove();
-    form['input-transaction-amount'].value.remove();
-    if(amount > 0 && !source.equals(""))  setIncomeHistory(source, amount);
-    else if(amount < 0 && !source.equals("")) setExpenseHistory(source, amount);
+    form['input-transaction-source'].value = "";
+    form['input-transaction-amount'].value = "";
+    if(amount > 0 && source.trim().length)  setIncomeHistory(source, amount);
+    else if(amount < 0 && source.trim().length) setExpenseHistory(source, amount);
 });
 
 function setIncomeHistory(source, amount){
