@@ -34,7 +34,7 @@ function setIncomeHistory(source, amount){
                         </div>
                         <div class="card-inner12">
                             <span class="card-amount">$${amount}</span>
-                            <i class="bi bi-trash"></i>
+                            <i onclick="deleteCard(event)" class="bi bi-trash"></i>
                         </div>
                     </div>
                 </div>`;
@@ -59,13 +59,12 @@ function setExpenseHistory(source, amount){
                         </div>
                         <div class="card-inner12">
                             <span class="card-amount">$${0-amount}</span>
-                            <i class="bi bi-trash"></i>
+                            <i onclick="deleteCard(event)" class="bi bi-trash"></i>
                         </div>
                     </div>
                 </div>`;
     expenseHistory.innerHTML += card;
     expense += (0 - parseFloat(amount));
-    console.log(expense);
     balance = income - expense;
     updateStats();
 }
@@ -74,4 +73,23 @@ function updateStats(){
     balanceStats.innerHTML = `Balance: $${balance}`;
     incomeStats.innerHTML = `Income: $${income}`;
     expenseStats.innerHTML = `Expense: $${expense}`;
+}
+
+
+function deleteCard(event){
+    if(event.target.classList.contains("bi-trash")){
+        const card = event.target.parentElement.parentElement.parentElement;
+        //console.log();
+        const amount = parseFloat((event.target.parentElement.children[0].innerHTML).substring(1));
+        if(card.classList.contains("in")){
+            income = income - amount;
+            balance = income - expense;;
+        }
+        else if(card.classList.contains("ex")){
+            expense = expense - amount;
+            balance = income - expense;
+        }
+        card.remove();
+        updateStats();
+    }
 }
