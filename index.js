@@ -9,8 +9,8 @@ let balance = 0;
 let income = 0;
 let expense = 0;
 
-incomeHistory.innerHTML = localStorage.getItem("income");
-expenseHistory.innerHTML = localStorage.getItem("expense");
+if(localStorage.getItem("income") != null)  incomeHistory.innerHTML = localStorage.getItem("income");
+if(localStorage.getItem("expense") != null)  expenseHistory.innerHTML = localStorage.getItem("expense");
 balance = localStorage.getItem("tbalance");
 if(balance === null)    balance = 0; 
 income = localStorage.getItem("tincome");
@@ -24,8 +24,10 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     const source = form['input-transaction-source'].value;
     const amount = form['input-transaction-amount'].value;
-    if(amount > 0)  setIncomeHistory(source, amount);
-    else if(amount < 0) setExpenseHistory(source, amount);
+    form['input-transaction-source'].value.remove();
+    form['input-transaction-amount'].value.remove();
+    if(amount > 0 && !source.equals(""))  setIncomeHistory(source, amount);
+    else if(amount < 0 && !source.equals("")) setExpenseHistory(source, amount);
 });
 
 function setIncomeHistory(source, amount){
